@@ -28,9 +28,9 @@ public class LoginController {
         User user =  userRepository.findByUsername(request.getUsername());
 
         if (user != null && user.getPassword().equals(request.getPassword())) {
-            return new ResponseEntity<>(new LoginResponse("access-token"), HttpStatus.OK);
+            return ResponseEntity.ok(new LoginResponse("access-token"));
         } else {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
     }
 }
