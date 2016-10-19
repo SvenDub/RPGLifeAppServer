@@ -3,8 +3,12 @@ package questionablequality.rpglifeserver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import questionablequality.rpglifeserver.entity.Quest;
 import questionablequality.rpglifeserver.entity.User;
 import questionablequality.rpglifeserver.repository.UserRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class RpgLifeAppServerApplication {
@@ -19,6 +23,12 @@ public class RpgLifeAppServerApplication {
         User s = new User();
         s.setUsername("sven.dubbeld1@gmail.com");
         s.setPassword("mypassword");
+
+        List<Quest> quests = new ArrayList<>();
+        quests.add(new Quest("test", s));
+        quests.add(new Quest("test2", s));
+        s.setQuests(quests);
+
         userRepository.save(s);
     }
 

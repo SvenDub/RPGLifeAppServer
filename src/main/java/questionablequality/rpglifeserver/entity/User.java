@@ -2,10 +2,8 @@ package questionablequality.rpglifeserver.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
@@ -18,6 +16,10 @@ public class User {
 
     @JsonIgnore
     private String password;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Quest> quests;
 
     public User() {
     }
@@ -44,5 +46,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Quest> getQuests() {
+        return quests;
+    }
+
+    public void setQuests(List<Quest> quests) {
+        this.quests = quests;
     }
 }
