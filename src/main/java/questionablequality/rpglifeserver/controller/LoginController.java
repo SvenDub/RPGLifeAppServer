@@ -3,10 +3,7 @@ package questionablequality.rpglifeserver.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import questionablequality.rpglifeserver.entity.LoginEntry;
 import questionablequality.rpglifeserver.entity.LoginRequest;
 import questionablequality.rpglifeserver.entity.LoginResponse;
@@ -29,7 +26,7 @@ public class LoginController {
         this.loginRepository = loginRepository;
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public ResponseEntity<LoginResponse> index(@RequestBody LoginRequest request) {
         User user =  userRepository.findByUsername(request.getUsername());
 
