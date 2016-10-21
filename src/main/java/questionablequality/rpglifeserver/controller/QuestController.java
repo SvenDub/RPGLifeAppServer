@@ -45,8 +45,11 @@ public class QuestController {
         }
     }
 
-    @PostMapping("/:id")
+    @PostMapping("/${id}")
     public ResponseEntity<Quest> saveQuest(@RequestHeader(name = "Authorization") String accessToken, @RequestBody Quest quest) {
+        System.out.println("Saving " + quest.getId());
+        System.out.println("Progress " + quest.getProgress());
+        System.out.println("Name " + quest.getName());
         LoginEntry loginEntry = loginRepository.findByAccessToken(accessToken);
         if (loginEntry != null) {
             quest.setUser(loginEntry.getUser());
