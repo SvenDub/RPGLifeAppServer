@@ -44,4 +44,15 @@ public class QuestController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
     }
+
+    @PostMapping("/:id")
+    public ResponseEntity<Quest> saveQuest(@RequestHeader(name = "Authorization") String accessToken, @RequestBody Quest quest) {
+        LoginEntry loginEntry = loginRepository.findByAccessToken(accessToken);
+        if (loginEntry != null) {
+            quest.setUser(loginEntry.getUser());
+            return ResponseEntity.ok(questRepository.save(quest));
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+    }
 }
