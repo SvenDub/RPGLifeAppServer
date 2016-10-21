@@ -45,7 +45,7 @@ public class QuestController {
         }
     }
 
-    @PostMapping("/${id}")
+    @PostMapping("/{id}")
     public ResponseEntity<Quest> saveQuest(@RequestHeader(name = "Authorization") String accessToken, @RequestBody Quest quest, @RequestParam int id) {
         System.out.println("Saving " + quest.getId());
         System.out.println("Progress " + quest.getProgress());
