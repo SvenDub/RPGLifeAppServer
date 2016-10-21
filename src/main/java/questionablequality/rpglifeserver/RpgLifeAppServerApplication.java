@@ -25,8 +25,8 @@ public class RpgLifeAppServerApplication {
         s.setPassword("mypassword");
 
         List<Quest> quests = new ArrayList<>();
-        quests.add(new Quest("test", s));
-        quests.add(new Quest("test2", s));
+        quests.add(new Quest("test", "description", 10, 5, 100, s));
+        quests.add(new Quest("test2", "description", 7, 0, 110, s));
         s.setQuests(quests);
 
         userRepository.save(s);
