@@ -3,7 +3,7 @@ EXPOSE 12345
 
 ADD . /rpglifeappserver
 WORKDIR /rpglifeappserver
-RUN ./mvnw package
+RUN ./mvnw package -B
 WORKDIR  /
 RUN cp /rpglifeappserver/target/rpglifeapp-server-*.jar /rpglifeapp-server.jar \
     && rm -rf /rpglifeappserver

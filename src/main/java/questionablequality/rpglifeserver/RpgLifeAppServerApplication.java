@@ -19,17 +19,22 @@ public class RpgLifeAppServerApplication {
     public RpgLifeAppServerApplication(UserRepository userRepository) {
         this.userRepository = userRepository;
 
-        // Fill dummy database
-        User s = new User();
-        s.setUsername("sven.dubbeld1@gmail.com");
-        s.setPassword("mypassword");
+        User user = userRepository.findByUsername("sven.dubbeld1@gmail.com");
 
-        List<Quest> quests = new ArrayList<>();
-        quests.add(new Quest("test", "description", 10, 5, 100, s));
-        quests.add(new Quest("test2", "description", 7, 0, 110, s));
-        s.setQuests(quests);
+        if (user == null) {
 
-        userRepository.save(s);
+            // Fill dummy database
+            User s = new User();
+            s.setUsername("sven.dubbeld1@gmail.com");
+            s.setPassword("mypassword");
+
+            List<Quest> quests = new ArrayList<>();
+            quests.add(new Quest("test", "description", 10, 5, 100, s));
+            quests.add(new Quest("test2", "description", 7, 0, 110, s));
+            s.setQuests(quests);
+
+            userRepository.save(s);
+        }
     }
 
     public static void main(String[] args) {
