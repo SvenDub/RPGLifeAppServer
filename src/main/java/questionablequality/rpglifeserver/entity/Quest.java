@@ -19,11 +19,9 @@ public class Quest {
     private double placeLat;
     private double placeLong;
 
-    @Nullable
     @ManyToOne
     private User user;
     
-    @Nullable
     @ManyToOne
     private Guild guild;
 
