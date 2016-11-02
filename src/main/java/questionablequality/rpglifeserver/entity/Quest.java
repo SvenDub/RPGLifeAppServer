@@ -1,6 +1,5 @@
 package questionablequality.rpglifeserver.entity;
 
-import com.sun.istack.internal.Nullable;
 import javax.persistence.*;
 
 @Entity
