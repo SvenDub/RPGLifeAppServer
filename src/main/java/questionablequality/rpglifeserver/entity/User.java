@@ -13,6 +13,8 @@ public class User {
     private int id;
 
     private String username;
+
+    private int xp;
     
     @ManyToOne
     private Guild guild;
@@ -49,6 +51,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getXp() {
+        return xp;
+    }
+
+    public void setXp(int xp) {
+        this.xp = xp;
     }
 
     public List<Quest> getQuests() {
