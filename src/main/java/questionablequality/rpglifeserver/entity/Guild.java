@@ -5,35 +5,41 @@
  */
 package questionablequality.rpglifeserver.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.List;
 
 /**
- *
  * @author Tobi
  */
 @Entity
 public class Guild {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String name;
-    
-    @OneToOne(mappedBy = "guild")
-    private int guildLeader;
-    
+
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
+    @OneToOne
+    private User guildLeader;
+
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "guild")
-    private List<Integer> members;
+    private List<User> members;
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "guild")
     private List<Quest> quests;
-    
-    public Guild(){
-        
+
+    public Guild() {
     }
 
     public int getId() {
@@ -52,19 +58,19 @@ public class Guild {
         this.name = name;
     }
 
-    public int getGuildLeader() {
+    public User getGuildLeader() {
         return guildLeader;
     }
 
-    public void setGuildLeader(int guildLeader) {
+    public void setGuildLeader(User guildLeader) {
         this.guildLeader = guildLeader;
     }
 
-    public List<Integer> getMembers() {
+    public List<User> getMembers() {
         return members;
     }
 
-    public void setMembers(List<Integer> members) {
+    public void setMembers(List<User> members) {
         this.members = members;
     }
 
@@ -75,6 +81,6 @@ public class Guild {
     public void setQuests(List<Quest> quests) {
         this.quests = quests;
     }
-    
-    
+
+
 }
