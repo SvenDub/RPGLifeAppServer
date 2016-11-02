@@ -5,11 +5,10 @@
  */
 package questionablequality.rpglifeserver.repository;
 
-import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import questionablequality.rpglifeserver.entity.Guild;
-import questionablequality.rpglifeserver.entity.Quest;
-import questionablequality.rpglifeserver.entity.User;
+
+import java.util.List;
 
 /**
  *
@@ -18,8 +17,6 @@ import questionablequality.rpglifeserver.entity.User;
 public interface GuildRepository extends CrudRepository<Guild, Integer> {
 
     List<Guild> findAll();
-    
-    List<Guild> findByUser(User user);
     
     Guild findById(int id);
     
