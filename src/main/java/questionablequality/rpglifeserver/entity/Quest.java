@@ -20,17 +20,11 @@ public class Quest {
 
     @ManyToOne
     private User user;
+    
+    @ManyToOne
+    private Guild guild;
 
     public Quest() {
-    }
-
-    public Quest(String name, String description, int goal, int progress, int rewardxp, User user) {
-        this.name = name;
-        this.description = description;
-        this.goal = goal;
-        this.progress = progress;
-        this.rewardxp = rewardxp;
-        this.user = user;
     }
 
     public int getId() {
@@ -108,4 +102,14 @@ public class Quest {
     public void setPlaceLong(double placeLong) {
         this.placeLong = placeLong;
     }
+
+    public Guild getGuild() {
+        return guild;
+    }
+
+    public void setGuild(Guild guild) {
+        this.guild = guild;
+    }
+    
+    
 }

@@ -13,6 +13,9 @@ public class User {
     private int id;
 
     private String username;
+    
+    @ManyToOne
+    private Guild guild;
 
     @JsonIgnore
     private String password;
@@ -55,4 +58,14 @@ public class User {
     public void setQuests(List<Quest> quests) {
         this.quests = quests;
     }
+
+    public Guild getGuild() {
+        return guild;
+    }
+
+    public void setGuild(Guild guild) {
+        this.guild = guild;
+    }
+    
+    
 }

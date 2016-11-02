@@ -27,14 +27,18 @@ public class RpgLifeAppServerApplication {
             User s = new User();
             s.setUsername("sven.dubbeld1@gmail.com");
             s.setPassword("mypassword");
-
-            List<Quest> quests = new ArrayList<>();
-            quests.add(new Quest("test", "description", 10, 5, 100, s));
-            quests.add(new Quest("test2", "description", 7, 0, 110, s));
-            s.setQuests(quests);
-
             userRepository.save(s);
         }
+
+        user = userRepository.findByUsername("tvanbronswijk@gmail.com");
+
+        if (user == null) {
+            User s = new User();
+            s.setUsername("tvanbronswijk@gmail.com");
+            s.setPassword("mijnwachtwoord");
+            userRepository.save(s);
+        }
+                
     }
 
     public static void main(String[] args) {
