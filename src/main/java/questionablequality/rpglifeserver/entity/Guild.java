@@ -6,14 +6,9 @@
 package questionablequality.rpglifeserver.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 /**
  *
@@ -28,10 +23,10 @@ public class Guild {
     private String name;
     
     @OneToOne(mappedBy = "guild")
-    private User guildLeader;
+    private int guildLeader;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "guild")
-    private List<User> members;
+    private List<Integer> members;
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "guild")
@@ -57,19 +52,19 @@ public class Guild {
         this.name = name;
     }
 
-    public User getGuildLeader() {
+    public int getGuildLeader() {
         return guildLeader;
     }
 
-    public void setGuildLeader(User guildLeader) {
+    public void setGuildLeader(int guildLeader) {
         this.guildLeader = guildLeader;
     }
 
-    public List<User> getMembers() {
+    public List<Integer> getMembers() {
         return members;
     }
 
-    public void setMembers(List<User> members) {
+    public void setMembers(List<Integer> members) {
         this.members = members;
     }
 

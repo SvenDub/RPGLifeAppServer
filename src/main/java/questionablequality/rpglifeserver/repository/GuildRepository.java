@@ -6,6 +6,7 @@
 package questionablequality.rpglifeserver.repository;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import questionablequality.rpglifeserver.entity.Guild;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  *
  * @author Tobi
  */
+@Repository
 public interface GuildRepository extends CrudRepository<Guild, Integer> {
 
     List<Guild> findAll();
