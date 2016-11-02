@@ -44,7 +44,7 @@ public class GuildController {
     public ResponseEntity<List<Guild>> getAll(@RequestHeader(name = "Authorization") String accessToken) {
         LoginEntry loginEntry = loginRepository.findByAccessToken(accessToken);
         if (loginEntry != null) {
-            return ResponseEntity.ok(guildRepository.findByUser(loginEntry.getUser()));
+            return ResponseEntity.ok(guildRepository.findAll());
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }

@@ -17,6 +17,8 @@ import questionablequality.rpglifeserver.entity.User;
  */
 public interface GuildRepository extends CrudRepository<Guild, Integer> {
 
+    List<Guild> findAll();
+    
     List<Guild> findByUser(User user);
     
     Guild findById(int id);
