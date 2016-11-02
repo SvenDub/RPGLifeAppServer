@@ -14,6 +14,9 @@ public class Quest {
     private int goal;
     private int progress;
     private int rewardxp;
+    private String placeName;
+    private double placeLat;
+    private double placeLong;
 
     @ManyToOne
     private User user;
@@ -80,5 +83,29 @@ public class Quest {
 
     public void setRewardxp(int rewardxp) {
         this.rewardxp = rewardxp;
+    }
+
+    public String getPlaceName() {
+        return placeName;
+    }
+
+    public void setPlaceName(String placeName) {
+        this.placeName = placeName;
+    }
+
+    public double getPlaceLat() {
+        return placeLat;
+    }
+
+    public void setPlaceLat(double placeLat) {
+        this.placeLat = placeLat;
+    }
+
+    public double getPlaceLong() {
+        return placeLong;
+    }
+
+    public void setPlaceLong(double placeLong) {
+        this.placeLong = placeLong;
     }
 }
