@@ -27,7 +27,7 @@ public class Guild {
 
     private String name;
     
-    @OneToOne
+    @OneToOne(mappedBy = "guild")
     private User guildLeader;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "guild")
