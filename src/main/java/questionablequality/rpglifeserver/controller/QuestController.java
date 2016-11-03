@@ -28,11 +28,21 @@ public class QuestController {
         this.userRepository = userRepository;
     }
 
-    @GetMapping
+    @RequestMapping
     public ResponseEntity<List<Quest>> getAll(@RequestHeader(name = "Authorization") String accessToken) {
         LoginEntry loginEntry = loginRepository.findByAccessToken(accessToken);
         if (loginEntry != null) {
             return ResponseEntity.ok(questRepository.findByUser(loginEntry.getUser()));
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+    }
+
+    @RequestMapping("/{id}")
+    public ResponseEntity<Quest> getById(@RequestHeader(name = "Authorization") String accessToken, @PathVariable("id") int id) {
+        LoginEntry loginEntry = loginRepository.findByAccessToken(accessToken);
+        if (loginEntry != null) {
+            return ResponseEntity.ok(questRepository.findOne(id));
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }

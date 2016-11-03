@@ -12,8 +12,6 @@ import java.util.List;
 public interface QuestRepository extends CrudRepository<Quest, Integer> {
 
     List<Quest> findByUser(User user);
-    
-    Quest findById(int id);
 
     List<Quest> findByGuild(Guild guild);
 }
