@@ -48,7 +48,6 @@ public class GuildQuestController {
     public ResponseEntity<Quest> addQuest(@RequestHeader(name = "Authorization") String accessToken, @RequestBody Quest quest) {
         LoginEntry loginEntry = loginRepository.findByAccessToken(accessToken);
         if (loginEntry != null) {
-            quest.setUser(loginEntry.getUser());
             quest.setGuild(loginEntry.getUser().getGuild());
             return ResponseEntity.ok(questRepository.save(quest));
         } else {
@@ -60,7 +59,6 @@ public class GuildQuestController {
     public ResponseEntity<Quest> saveQuest(@RequestHeader(name = "Authorization") String accessToken, @RequestBody Quest quest, @PathVariable int id) {
         LoginEntry loginEntry = loginRepository.findByAccessToken(accessToken);
         if (loginEntry != null) {
-            quest.setUser(loginEntry.getUser());
             quest.setGuild(loginEntry.getUser().getGuild());
             return ResponseEntity.ok(questRepository.save(quest));
         } else {
